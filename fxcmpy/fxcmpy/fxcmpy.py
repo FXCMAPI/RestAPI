@@ -2748,8 +2748,8 @@ class fxcmpy(object):
                 except:
                     self.logger.error('Call of %s raised an error:' % func)
                     self.logger.error(sys.exc_info()[0])
-                    self.logger(sys.exc_info()[1])
-                    self.logger(sys.exc_info()[2])
+                    self.logger.error(sys.exc_info()[1])
+                    self.logger.error(sys.exc_info()[2])
 
     def __on_error__(self, msg=''):
         self.logger.error('Error: %s' % msg)
