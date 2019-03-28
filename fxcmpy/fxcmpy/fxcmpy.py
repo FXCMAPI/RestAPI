@@ -2644,8 +2644,8 @@ class fxcmpy(object):
                 except:
                     self.logger.error('Call of %s raised an error:' % func)
                     self.logger.error(sys.exc_info()[0])
-                    self.logger(sys.exc_info()[1])
-                    self.logger(sys.exc_info()[2])
+                    self.logger.error(sys.exc_info()[1])
+                    self.logger.error(sys.exc_info()[2])
 
     def __on_open_pos_update__(self, msg):
         """ Gets called when the open_position stream sends new data.
@@ -2696,8 +2696,8 @@ class fxcmpy(object):
                 except:
                     self.logger.error('Call of %s raised an error:' % func)
                     self.logger.error(sys.exc_info()[0])
-                    self.logger(sys.exc_info()[1])
-                    self.logger(sys.exc_info()[2])
+                    self.logger.error(sys.exc_info()[1])
+                    self.logger.error(sys.exc_info()[2])
 
     def __on_closed_pos_update__(self, msg):
         """ Gets called when the closed_position stream sends new data.
@@ -2748,8 +2748,8 @@ class fxcmpy(object):
                 except:
                     self.logger.error('Call of %s raised an error:' % func)
                     self.logger.error(sys.exc_info()[0])
-                    self.logger(sys.exc_info()[1])
-                    self.logger(sys.exc_info()[2])
+                    self.logger.error(sys.exc_info()[1])
+                    self.logger.error(sys.exc_info()[2])
 
     def __on_error__(self, msg=''):
         self.logger.error('Error: %s' % msg)
