@@ -2495,34 +2495,33 @@ class fxcmpy(object):
         data = None
         try:
             data = req.json()
-
-            if 'response' not in data or 'executed' not in data['response']:
-                self.logger.error('Malformed response %s' % data)
-                raise ServerError('Malformed response')
-
-            if not data['response']['executed']:
-                if 'error' in data['response'] and data['response']['error'] != '':
-                    self.logger.error('Server reports an error: %s.'
-                                      % data['response'])
-                    self.logger.error('URL: %s' % req.url)
-                    self.logger.error('Headers: %s' % req.request.headers)
-                    self.logger.error('Params: %s' % params)
-                    self.logger.error('Bearer token: %s' % self.bearer_token)
-                    self.logger.error('Connection status: %s'
-                                      % self.connection_status)
-                    self.logger.error('Socket session id: %s'
-                                      % self.socket._engineIO_session.id)
-
-                    raise ServerError('FXCM Server reports an error: %s.'
-                                      % data['response']['error'])
-                else:
-                    self.logger.error('FXCM Server reports an unknown error: %s.'
-                                      % data['response'])
-                    raise ServerError('FXCM Server returns an unknown error.')
-
         except:
             self.logger.error('Can not parse server answer to json object: %s.'
                               % req.text)
+
+        if 'response' not in data or 'executed' not in data['response']:
+            self.logger.error('Malformed response %s' % data)
+            raise ServerError('Malformed response')
+
+        if not data['response']['executed']:
+            if 'error' in data['response'] and data['response']['error'] != '':
+                self.logger.error('Server reports an error: %s.'
+                                    % data['response'])
+                self.logger.error('URL: %s' % req.url)
+                self.logger.error('Headers: %s' % req.request.headers)
+                self.logger.error('Params: %s' % params)
+                self.logger.error('Bearer token: %s' % self.bearer_token)
+                self.logger.error('Connection status: %s'
+                                    % self.connection_status)
+                self.logger.error('Socket session id: %s'
+                                    % self.socket._engineIO_session.id)
+
+                raise ServerError('FXCM Server reports an error: %s.'
+                                    % data['response']['error'])
+            else:
+                self.logger.error('FXCM Server reports an unknown error: %s.'
+                                    % data['response'])
+                raise ServerError('FXCM Server returns an unknown error.')
 
         self.logger.debug('Server answer: %s.' % data)
 
