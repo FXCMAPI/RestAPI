@@ -60,7 +60,7 @@ Clients should establish a persistent WebSocket connection using socket.io libra
 | 6 | Account |
 
 ## Subscribe vs snapshot:
-FXCM Rest API provides two ways to deliever data. susbcribe vs snapshot.
+FXCM Rest API provides two ways to deliever data. subscribe vs snapshot.
 
 After susbcribe, data will be pushed to your socket whenever there is an update. You can susbcribe Market data stream /susbcribe or live table update /trading/susbcribe. You can also unsubscribe.
 You can request a snapshot of trading tables via /trading/get_model. 
